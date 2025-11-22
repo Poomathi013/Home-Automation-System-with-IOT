@@ -1,45 +1,62 @@
-Home-Automation-System-with-IOT
-AIM:
-To make a Lamp at home (230 V AC) On / Off using ESP8266, IFTT Google Assistance and Blynk IoT mobile application.
+# Home-Automation-System-with-IOT
 
-COMPONENTS REQUIRED:
-PC with Internet connection Micro USB cable Wifi connection for ESP8266 (Use any mobile hotspot or Router) ESP8266 Board Mobile Phone with Blynk App installed IFTT for Google Voice Assistance 9 W Bulb and Relay control Arduino software Jumper Wires
+# AIM: 
+  To make a Lamp at home (230 V AC) On / Off using ESP8266, IFTT Google Assistance and Blynk IoT mobile application.          
+           
+# COMPONENTS REQUIRED:
+PC with Internet connection
+Micro USB cable
+Wifi connection for ESP8266 (Use any mobile hotspot or Router)
+	ESP8266 Board
+	Mobile Phone with Blynk App installed
+            IFTT for Google Voice Assistance
+	9 W Bulb and Relay control
+Arduino software 
+Jumper Wires
 
-Theory:
-Blynk is an IoT platform for iOS or Android smartphones that is used to control Arduino, Raspberry Pi and NodeMCU via the Internet. This application is used to create a graphical interface or human machine interface (HMI) by compiling and providing the appropriate address on the available widgets.In this experiment we use ESP8266 to control a 220-volt lamp from a web server. But you can also use the same procedure to control fans, lights, AC, or other electrical devices that you want to control remotely. Relay is an electromechanical device that is used as a switch between high current and low current devices. When the coil in the relay gets fully energized, the contact shifts from the normally open position to the normally closed position. Light bulbs usually operate on 120V or 220V AC power supply. We cannot interface these AC loads directly with the ESP8266 development board, or it will damage the board. We have to use a relay between the ESP8266 and the lamp. Google Assistant and IFTTT work together to let you control services with voice commands. When you say a set phrase, Google Assistant processes it and sends it to IFTTT as a trigger. If the phrase matches an applet you've created, IFTTT performs the linked action—like turning on a light or sending a message. Everything runs in the cloud, making it easy to automate tasks with just your voice, as long as the command is correctly matched and all services are online. When we apply an active high signal to the signal pin of the relay module from any microcontroller like ESP8266, the relay contact moves from the normally open to the normally closed position. It makes the circuit complete, and the output load turns on.
+## Theory: 
+Blynk is an IoT platform for iOS or Android smartphones that is used to control Arduino, Raspberry Pi and NodeMCU via the Internet. This application is used to create a graphical interface or human machine interface (HMI) by compiling and providing the appropriate address on the available widgets.In this experiment we use ESP8266 to control a 220-volt lamp from a web server. But you can also use the same procedure to control fans, lights, AC, or other electrical devices that you want to control remotely.
+Relay is an electromechanical device that is used as a switch between high current and low current devices. When the coil in the relay gets fully energized, the contact shifts from the normally open position to the normally closed position. Light bulbs usually operate on 120V or 220V AC power supply. We cannot interface these AC loads directly with the ESP8266 development board, or it will damage the board. We have to use a relay between the ESP8266 and the lamp. 
+Google Assistant and IFTTT work together to let you control services with voice commands. When you say a set phrase, Google Assistant processes it and sends it to IFTTT as a trigger. If the phrase matches an applet you've created, IFTTT performs the linked action—like turning on a light or sending a message. Everything runs in the cloud, making it easy to automate tasks with just your voice, as long as the command is correctly matched and all services are online.
+When we apply an active high signal to the signal pin of the relay module from any microcontroller like ESP8266, the relay contact moves from the normally open to the normally closed position. It makes the circuit complete, and the output load turns on.
 
-PROCEDURE:
-• Make the circuit connection as per the diagram. In the mobile, download and “Blynq IoT” application using Google play store and Install it. Create log in ID and Password.
+# PROCEDURE:
 
-• Connect the IN pin of the Relay module to D1 pin of NodeMCU (ESP8266).
+•	Make the circuit connection as per the diagram. In the mobile, download and “Blynq IoT” application using Google play store and Install it. Create log in ID and Password.
 
-• Connect VCC of the Relay of NodeMCU. Connect GND of the Relay to GND of NodeMCU.
+•	Connect the IN pin of the Relay module to D1 pin of NodeMCU (ESP8266).
 
-• Connect your AC bulb to the Relay’s switch terminal securely.
+•	Connect VCC of the Relay of NodeMCU. Connect GND of the Relay to GND of NodeMCU. 
 
-• Install ESP8266 board in Arduino IDE via Board Manager. Select board: NodeMCU 1.0 (ESP-12E Module).
+•	Connect your AC bulb to the Relay’s switch terminal securely.
 
-• Include necessary libraries: ESP8266WiFi and ESP8266WebServer.
+•	Install ESP8266 board in Arduino IDE via Board Manager. Select board: NodeMCU 1.0 (ESP-12E Module).
 
-• In the code, configure Wi-Fi SSID and Password.
+•	Include necessary libraries: ESP8266WiFi and ESP8266WebServer.
 
-• Set up a web server that responds to /on and /off URLs.
+•	In the code, configure Wi-Fi SSID and Password.
 
-• Upload the code to the ESP8266 using a micro USB cable.
+•	Set up a web server that responds to /on and /off URLs.
 
-• Get Local IP Address After uploading, open Serial Monitor to find the local IP address of ESP8266.
+•	Upload the code to the ESP8266 using a micro USB cable.
 
-• Create Applets on IFTTT - For "This", select Google Assistant → "Say a simple phrase". Command: "Turn on the light". For "That", choose Webhooks → "Make a web request".
+•	Get Local IP Address After uploading, open Serial Monitor to find the local IP address of ESP8266.
 
-• Repeat to create another applet for command with URL.
+•	Create Applets on IFTTT - For "This", select Google Assistant → "Say a simple phrase". Command: "Turn on the light". For "That", choose Webhooks → "Make a web request". 
 
-• Test the System - Google Assistant triggers IFTTT → sends Webhook to ESP8266 → turns ON the relay (light).
+•	Repeat to create another applet for command with URL.
 
-• Say "Turn off the ligh to switch it OFF, Say "Turn on the light" to switch it ON.
+•	Test the System - Google Assistant triggers IFTTT → sends Webhook to ESP8266 → turns ON the relay (light).
 
-CIRCUIT DIAGRAM:
-image
-PROGRAM:
+•	Say "Turn off the ligh to switch it OFF, Say "Turn on the light" to switch it ON.
+
+# CIRCUIT DIAGRAM:
+
+<img width="799" height="452" alt="image" src="https://github.com/user-attachments/assets/97933966-fc28-477c-9b59-ae38ac2a518c" />
+
+# PROGRAM:
+
+```C
 #define BLYNK_PRINT Serial 
 /* Fill-in your Template ID (only if using Blynk.Cloud) */ 
 //#define BLYNK_TEMPLATE_ID   "YourTemplateID" 
@@ -68,8 +85,13 @@ void loop()
 { 
   Blynk.run(); 
 } 
-Output:
-<img width="1052" height="567" alt="image" src="https://github.com/user-attachments/assets/0c05f2fd-5c0b-4098-8560-5bd21784e0ac" />
+```
 
-Result:
-Thus the 230V bulb at home is remotely controlled by the Google voice assistance.
+
+ 
+# Output:
+
+<img width="1052" height="567" alt="Screenshot 2025-11-20 111001" src="https://github.com/user-attachments/assets/fecf9d7d-b37e-4a65-abcf-40adc9915c28" />
+
+## Result:
+Thus the 230V bulb at home is remotely controlled by the Google voice assistance.  
